@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="4dp" >
+
+    <TextView
+        android:id="@+id/drawer_child_counter_active"
+        style="@android:style/TextAppearance.Holo.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="?android:attr/expandableListPreferredChildPaddingLeft"
+        android:background="@drawable/counter_border_active"
+        android:gravity="center_horizontal"
+        android:minWidth="32dp"
+        android:textColor="@android:color/background_dark" />
+
+    <TextView
+        android:id="@+id/drawer_child_counter_inactive"
+        style="@android:style/TextAppearance.Holo.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="?android:attr/expandableListPreferredChildPaddingLeft"
+        android:background="@drawable/counter_border_inactive"
+        android:gravity="center_horizontal"
+        android:minWidth="32dp"
+        android:textColor="@android:color/background_dark" />
+
+    <TextView
+        android:id="@+id/drawer_child_text"
+        style="@android:style/TextAppearance.Holo.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp" />
+
+</LinearLayout>

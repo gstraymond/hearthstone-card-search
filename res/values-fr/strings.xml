@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="welcome_text"></string>
+    <string name="progress_card_found">carte trouvée</string>
+    <string name="progress_cards_found">cartes trouvées</string>
+    <string name="list_menu_cards">Liste des cartes</string>
+    <string name="list_menu_facets">Liste des filtres</string>
+    <string name="list_menu_clear">Effacer la recherche</string>
+    <string name="list_menu_search">Recherche</string>
+    <string name="list_menu_help">A l\'aide !</string>
+    
+    <string name="detail_menu_oracle">Texte</string>
+    <string name="detail_menu_pictures">Images</string>
+    
+    <string name="search_hint">anneau solaire, draw, sacrifice…</string>
+    <string name="failed_search">Ouch, la recherche est cassée ! Connecté à internet ?</string>
+    
+    <string name="card_type">Type :</string>
+    <string name="card_formats">Formats :</string>
+    
+    <string name="drawer_open">Rechercher</string>
+    <string name="drawer_close">Revenir aux cartes</string>
+    
+    <string name="toasting_loading_finished">Terminé !</string>
+    
+    <string name="facet_ability">Capacité</string>
+    <string name="facet_artist">Artiste</string>
+    <string name="facet_color">Couleur</string>
+    <string name="facet_cmc">Coût converti de mana</string>
+    <string name="facet_devotion">Dévotion</string>
+    <string name="facet_format">Format</string>
+    <string name="facet_power">Force</string>
+    <string name="facet_rarity">Rareté</string>
+    <string name="facet_set">Édition</string>
+    <string name="facet_toughness">Endurance</string>
+    <string name="facet_type">Type</string>
+    
+    <string name="loading_initial">recherche…</string>
+    <string name="loading_more">chargement des 30 cartes suivantes…</string>
+    <string name="loading_clear">suppression de la recherche …</string>
+    <string name="loading_facet">filtrage de la recherche…</string>
+    <string name="loading_more_facet">ajout de filtres…</string>
+</resources>

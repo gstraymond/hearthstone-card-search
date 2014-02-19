@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="castingCostSize">20sp</dimen>
+    <dimen name="listTextPaddingBottom">5sp</dimen>
+</resources>

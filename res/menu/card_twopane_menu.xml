@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/search_tab"
+        android:icon="@android:drawable/ic_menu_search"
+        android:showAsAction="ifRoom"
+        android:title="@string/list_menu_search"/>
+    <item
+        android:id="@+id/pictures_tab"
+        android:icon="@drawable/picture"
+        android:showAsAction="always"
+        android:title="@string/detail_menu_pictures"/>
+    <item
+        android:id="@+id/oracle_tab"
+        android:icon="@drawable/text_letter"
+        android:showAsAction="ifRoom"
+        android:title="@string/detail_menu_oracle"
+        android:visible="false"/>
+    <item
+        android:id="@+id/clear_tab"
+        android:icon="@drawable/delete"
+        android:showAsAction="ifRoom"
+        android:title="@string/list_menu_clear"/>
+    <item
+        android:id="@+id/help_tab"
+        android:icon="@drawable/info"
+        android:showAsAction="ifRoom"
+        android:title="@string/list_menu_help"/>
+
+</menu>

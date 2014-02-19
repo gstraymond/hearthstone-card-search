@@ -1,0 +1,187 @@
+{
+    "title": "Help !",
+    "descriptions": [
+        "Welcome on this card search engine for Magic : The Gathering.",
+        "This is mobile version of <a href=\"http://magic-card-search.com\">magic-card-search.com</a>.",
+        "This search engine contains all card until the last extension Theros.",
+        "It has been made for simple and powerful search thanks to :"
+    ],
+    "items": [
+        "text search",
+        "facets filtering"
+    ],
+    "texts": [
+        {
+            "title": "How do I search cards ?",
+            "texts": [
+                {
+                    "title": "Text search",
+                    "descriptions": [
+                        "All cards has been indexed in English. For French people, card title is also available in French.",
+                        "Text search can search words contained in all card text content (title, description, type...).",
+                        "Text search works with full words. For example, searching elf enchantment returns all cards where text content contains elf AND enchantment."
+                    ],
+                    "texts": [
+                        {
+                            "title": "Character *",
+                            "descriptions": [
+                                "Character * can be used for searching partial words, for example : "
+                            ],
+                            "items": [
+                                "searching lo*us returns card containing words lotus and locus. ",
+                                "searching emra* returns cards beginning with emra like Emrakul. "
+                            ]
+                        },
+                        {
+                            "title": "Character \"",
+                            "descriptions": [
+                                "Character \" searchs a text block. For example, searching \"add three mana\" returns cards containing this text block like Black Lotus, Lotus Vale, Gilded Lotus... "
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Facets",
+                    "descriptions": [
+                        "Facets are filters that can be applied and cumulated for searching. ",
+                        "For instance, a facet can filter on card color. By selecting blue from Color facet, search results is filtered to display only blue cards. ",
+                        "Filters can be added from the same facet or another one. When selecting green, search results are again filtered to display only blue and green cards.",
+                        "Also, by selecting creature from Type facet, search results are again filtered to display only blue and green creatures. ",
+                        "Number between parenthesis at right of a facet is the number of results of this facet. This number is dynamic and relates to current search. ",
+                        "For example, when there are no search filter nor text search, 1 in facet Converted mana cost indicates 1612. It means that 1612 cards with CMC 1. ",
+                        "With previous search (blue/green/creature), the same filter in facet indicates 2. It means that only 2 cards exists with CMC 1 : Bioshift, Slippery Boggle."
+                    ],
+                    "texts": [
+                        {
+                            "title": "Color",
+                            "descriptions": [
+                                "Filters search results based on card color : "
+                            ],
+                            "items": [
+                                "White / Blue / Black / Red / Green : filter based on color",
+                                "Uncolored / Gold / 1 color / ... / 5 colors : filter based on colors number",
+                                "Guild : relates to symbols <img src='WU.png'> <img src='RW.png'> <img src='UB.png'> <img src='BG.png'> <img src='RG.png'> <img src='UR.png'> <img src='WB.png'> <img src='BR.png'> <img src='GW.png'>",
+                                "X : relates to symbol <img src='X.png'>",
+                                "Life : relates to symbols <img src='WP.png'> <img src='UP.png'> <img src='BP.png'> <img src='GP.png'> <img src='RP.png'>"
+                            ]
+                        },
+                        {
+                            "title": "Devotion",
+                            "descriptions": [
+                                "Filters search results based on devotion value. Devotion for a card color is calculated on number of mana symbol in casting cost.",
+                                "For instance, Abhorrent Overlord has 2 in devotion for black : <img src='5.png'><img src='B.png'><img src='B.png'>"
+                            ]
+                        },
+                        {
+                            "title": "Converted mana cost (CMC)",
+                            "descriptions": [
+                                "Filters seach results based on CMC : card casting cost mana sum.",
+                                "For instance, Abhorrent Overlord has 7 for CMC : <img src='5.png'><img src='B.png'><img src='B.png'>"
+                            ]
+                        },
+                        {
+                            "title": "Type",
+                            "descriptions": [
+                                "Filters search results based on type :"
+                            ],
+                            "items": [
+                                "creature",
+                                "enchantment",
+                                "instant",
+                                "human",
+                                "artifact",
+                                "sorcery",
+                                "aura",
+                                "legendary",
+                                "wizard",
+                                "land",
+                                "soldier",
+                                "warrior",
+                                "spirit",
+                                "elemental",
+                                "beast",
+                                "..."
+                            ]
+                        },
+                        {
+                            "title": "Ability",
+                            "descriptions": [
+                                "Filters sear results based on ability :"
+                            ],
+                            "items": [
+                                "Flying",
+                                "Enchant",
+                                "Trample",
+                                "Haste",
+                                "First Strike",
+                                "Flash",
+                                "Protection",
+                                "Equip",
+                                "Defender",
+                                "Vigilance",
+                                "Reach",
+                                "Cycling",
+                                "Morph",
+                                "Shroud",
+                                "Kicker",
+                                "..."
+                            ]
+                        },
+                        {
+                            "title": "Power",
+                            "descriptions": [
+                                "Filters search results based on creature power (from 0 to 15). "
+                            ]
+                        },
+                        {
+                            "title": "Toughness",
+                            "descriptions": [
+                                "Filters search results based on creature toughness (from 0 to 15)."
+                            ]
+                        },
+                        {
+                            "title": "Rarity",
+                            "descriptions": [
+                                "Filters search results based on rarity : "
+                            ],
+                            "items": [
+                                "common",
+                                "uncommon",
+                                "rare",
+                                "mythic",
+                                "special : promo cards, magazine gifts, builded decks",
+                                "land : basic land",
+                                "c1 / c2 / ... / r3 : old classification (Legends set, The Dark set...)"
+                            ]
+                        },
+                        {
+                            "title": "Set",
+                            "descriptions": [
+                                "Filters search results based on sets."
+                            ]
+                        },
+                        {
+                            "title": "Format",
+                            "descriptions": [
+                                "Filters search results based on formats :"
+                            ],
+                            "items": [
+                                "vintage : Type 1",
+                                "legacy : Type 1.5",
+                                "modern : Type 1.M",
+                                "extended : Type 1.X",
+                                "standard : Type 2"
+                            ]
+                        },
+                        {
+                            "title": "Artist",
+                            "descriptions": [
+                                "Filters search results based on artist name."
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

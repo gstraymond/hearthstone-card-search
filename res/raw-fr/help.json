@@ -1,0 +1,188 @@
+{
+    "title": "A l'aide",
+    "descriptions": [
+        "Bienvenue sur ce moteur de recherche de carte Magic : The Gathering.",
+        "Cette application est la version mobile de <a href=\"http://magic-card-search.com\">magic-card-search.com</a>.",
+        "Ce moteur de recherche contient toutes les cartes jusqu'à la dernière extension Theros.",
+        "Il a été conçu pour que la recherche soit la plus simple et efficace grâce à : "
+    ],
+    "items": [
+        "une recherche textuelle",
+        "un filtrage par facette"
+    ],
+    "texts": [
+        {
+            "title": "Comment rechercher des cartes ?",
+            "texts": [
+                {
+                    "title": "La recherche textuelle",
+                    "descriptions": [
+                        "Toutes les cartes ont été indexées en anglais, donc la recherche se fera en anglais. Cepdendant, le titre de cartes est aussi disponible en français.",
+                        "La recherche textuelle permet de rechercher des mots présents dans tout le contenu textuel d'une carte (titre, description, type...).",
+                        "La recherche textuelle fonctionne avec des mots entiers. Par exemple, la recherche elf enchantment va retourner toutes les cartes dont le contenu textuel contient elf ET enchantment.",
+                        "Une autre exemple, avec une recherche en français sur le titre : contresort va retourner les cartes Contresort immédiat et Contresort."
+                    ],
+                    "texts": [
+                        {
+                            "title": "Caractère *",
+                            "descriptions": [
+                                "Le caractère * permet de rechercher des mots incomplets. Par exemple :"
+                            ],
+                            "items": [
+                                "la recherche lo*us va retourner des résultats contenant le terme lotus et locus",
+                                "la recherche emra* va retourner des résultats commençant par emra et va retourner des résultats contenant Emrakul."
+                            ]
+                        },
+                        {
+                            "title": "Caractère \"",
+                            "descriptions": [
+                                "Le caractère \" va permettre de rechercher un bloc de texte. Par exemple, la recherche \"add three mana\" va retourner les cartes ayant ce bloc de texte dont Black Lotus, Vallon de Lotus, Lotus doré..."
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Les facettes",
+                    "descriptions": [
+                        "Les facettes sont des filtres que vous allez pouvoir appliquer et cumuler sur vos recherches.",
+                        "Par exemple, il existe une facette sur la couleur de la carte. En sélectionnant blue de la facette Color, la recherche va être filtrée pour ne sélectionner que les cartes de couleur bleue.",
+                        "Il est possible de cumuler les filtres au sein d'une même facette ou d'une facette différente. En cliquant, sur green, la recherche va être de nouveau filtrée pour n'afficher que des cartes de couleurs bleue et verte.",
+                        "De même, en cliquant sur creature de la facette Type, la recherche va être de nouveau filtrée pour n'afficher que des cartes de creatures de couleurs bleue et verte.",
+                        "Le chiffre entre parenthèse à droite d'une facette correspond au nombre de résultat correspondant. Ce chiffre est dynamique et correspond à la recherche courante.",
+                        "Par exemple, lorsqu'il n'y aucune recherche ni filtre de facette, 1 de la facette Converted mana cost indique 1612. Cela veut dire qu'il y a 1612 carte ayant un cout converti en mana de 1.",
+                        "Sur la recherche précédente (blue/green/creature), ce même filtre de facette indique 2. Ce qui indique qu'il existe 2 cartes de creature verte et bleue ayant un coût converti en mana de 1 (Biochangement et Bogle insaisissable)."
+                    ],
+                    "texts": [
+                        {
+                            "title": "Color — Couleur",
+                            "descriptions": [
+                                "Filtre la recherche sur la couleur de la carte :"
+                            ],
+                            "items": [
+                                "White / Blue / Black / Red / Green : filtre suivant la couleur",
+                                "Uncolored / Gold / 1 color / ... / 5 colors : filtre suivant le nombre de couleur",
+                                "Guild : correspond aux symboles <img src='WU.png'> <img src='RW.png'> <img src='UB.png'> <img src='BG.png'> <img src='RG.png'> <img src='UR.png'> <img src='WB.png'> <img src='BR.png'> <img src='GW.png'>",
+                                "X : correspond au symbole <img src='X.png'>",
+                                "Life : correspond aux symboles <img src='WP.png'> <img src='UP.png'> <img src='BP.png'> <img src='GP.png'> <img src='RP.png'>"
+                            ]
+                        },
+                        {
+                            "title": "Devotion — Dévotion",
+                            "descriptions": [
+                                "Filtre les permanents selon leur valeur en dévotion. La dévotion d'une couleur correspond au nombre de symbole de cette couleur dans le coût d'invocation de la carte.",
+                                "Par exemple, Suzerain abject a une dévotion de 2 en noir : <img src='5.png'><img src='B.png'><img src='B.png'>"
+                            ]
+                        },
+                        {
+                            "title": "Converted mana cost — Coût converti de mana (CMC)",
+                            "descriptions": [
+                                "Filtre les cartes suivant leurs CMC : total de mana correspondant au coût de lancement d'un sort.",
+                                "Par exemple, Suzerain abject a un CMC de 7 : <img src='5.png'><img src='B.png'><img src='B.png'>"
+                            ]
+                        },
+                        {
+                            "title": "Type",
+                            "descriptions": [
+                                "Filtre les cartes suivant leurs types :"
+                            ],
+                            "items": [
+                                "creature",
+                                "enchantment",
+                                "instant",
+                                "human",
+                                "artifact",
+                                "sorcery",
+                                "aura",
+                                "legendary",
+                                "wizard",
+                                "land",
+                                "soldier",
+                                "warrior",
+                                "spirit",
+                                "elemental",
+                                "beast",
+                                "..."
+                            ]
+                        },
+                        {
+                            "title": "Ability — Capacité",
+                            "descriptions": [
+                                "Filtre les cartes suivants leurs capacités :"
+                            ],
+                            "items": [
+                                "Flying",
+                                "Enchant",
+                                "Trample",
+                                "Haste",
+                                "First Strike",
+                                "Flash",
+                                "Protection",
+                                "Equip",
+                                "Defender",
+                                "Vigilance",
+                                "Reach",
+                                "Cycling",
+                                "Morph",
+                                "Shroud",
+                                "Kicker",
+                                "..."
+                            ]
+                        },
+                        {
+                            "title": "Power — Force",
+                            "descriptions": [
+                                "Filtre les créatures suivant leurs forces (va de 0 à 15)."
+                            ]
+                        },
+                        {
+                            "title": "Toughness — Endurance",
+                            "descriptions": [
+                                "Filtre les créatures suivant leurs endurances (va 0 à 15)."
+                            ]
+                        },
+                        {
+                            "title": "Rarity — Rareté",
+                            "descriptions": [
+                                "Filtre les cartes suivant leurs raretés :"
+                            ],
+                            "items": [
+                                "common : commune ",
+                                "uncommon : peu commune ",
+                                "rare : rare",
+                                "mythic : mythique",
+                                "special : cartes promotionnelles, offertes dans des magazines, présentes dans des decks préconstruits",
+                                "land : terrain de base",
+                                "c1 / c2 / ... / r3 : ancienne classification (éditions Legends, The Dark...) "
+                            ]
+                        },
+                        {
+                            "title": "Set — Édition",
+                            "descriptions": [
+                                "Filtre les cartes suivant les éditions."
+                            ]
+                        },
+                        {
+                            "title": "Format",
+                            "descriptions": [
+                                "Filtre les cartes suivant leurs formats :"
+                            ],
+                            "items": [
+                                "vintage : anciennement type 1",
+                                "legacy : anciennement type 1.5",
+                                "modern : anciennement type 1.M",
+                                "extended : anciennement type 1.X",
+                                "standard : anciennement type 2"
+                            ]
+                        },
+                        {
+                            "title": "Artist — Artiste",
+                            "descriptions": [
+                                "Filtre les cartes suivant leurs dessinateurs."
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

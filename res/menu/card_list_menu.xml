@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/clear_tab"
+        android:icon="@drawable/delete"
+        android:showAsAction="ifRoom"
+        android:title="@string/list_menu_clear"/>
+    <item
+        android:id="@+id/help_tab"
+        android:icon="@drawable/info"
+        android:showAsAction="ifRoom"
+        android:title="@string/list_menu_help"/>
+
+</menu>
