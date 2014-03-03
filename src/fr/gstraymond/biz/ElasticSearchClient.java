@@ -34,6 +34,7 @@ public class ElasticSearchClient {
 	private HttpClient httpClient;
 	private MapperUtil<SearchResult> mapperUtil;
 	private String appVersion;
+	private String appName;
 	private String osVersion;
 	
 	public ElasticSearchClient(URL url, ObjectMapper objectMapper, Context context) {
@@ -42,6 +43,7 @@ public class ElasticSearchClient {
 		this.httpClient = new DefaultHttpClient();
 		this.mapperUtil = new MapperUtil<SearchResult>(objectMapper, SearchResult.class);
 		this.appVersion = VersionUtils.getAppVersion(context);
+		this.appName = VersionUtils.getAppName(context);
 		this.osVersion = VersionUtils.getOsVersion();
 	}
 
@@ -72,7 +74,7 @@ public class ElasticSearchClient {
 		HttpGet getRequest = new HttpGet(url.toString() + "?source=" + query);
 		getRequest.addHeader(ACCEPT_ENCODING, GZIP);
 		getRequest.setHeader("User-Agent", "Android Java/" + osVersion);
-		getRequest.setHeader("Referer", "Magic Card Search - " + appVersion);
+		getRequest.setHeader("Referer", appName + " - " + appVersion);
 		return getRequest;
 	}
 
@@ -95,5 +97,13 @@ public class ElasticSearchClient {
 		Log.i(getClass().getName(), "parse took " + (System.currentTimeMillis() - now) + "ms");
 		progressBar.setProgress(66);
 		return searchResult;
+	}
+
+	public String getAppName() {
+		return appName;
+	}
+
+	public void setAppName(String appName) {
+		this.appName = appName;
 	}
 }

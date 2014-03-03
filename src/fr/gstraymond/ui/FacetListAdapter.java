@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import android.content.Context;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +12,9 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
-import fr.gstraymond.hearthstone.card.search.R;
 import fr.gstraymond.biz.SearchOptions;
 import fr.gstraymond.constants.FacetConst;
+import fr.gstraymond.hearthstone.card.search.R;
 import fr.gstraymond.search.model.response.facet.Facet;
 import fr.gstraymond.search.model.response.facet.Term;
 
@@ -122,7 +121,7 @@ public class FacetListAdapter extends BaseExpandableListAdapter {
 			ViewGroup parent) {
 		View view = convertView;
         if (view == null) {
-            LayoutInflater inflater = getLayoutInflater(parent.getContext());
+            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
             view = inflater.inflate(R.layout.drawer_child, null);
         }
         
@@ -187,7 +186,7 @@ public class FacetListAdapter extends BaseExpandableListAdapter {
 	public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
 		View view = convertView;
         if (view == null) {
-            LayoutInflater inflater = getLayoutInflater(parent.getContext());
+            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
             view = inflater.inflate(R.layout.drawer_group, null);
         }
 		
@@ -215,9 +214,5 @@ public class FacetListAdapter extends BaseExpandableListAdapter {
 	
 	public boolean isTermSelected(Term term) {
 		return selectedTerms.contains(term);
-	}
-	
-	private LayoutInflater getLayoutInflater(Context context) {
-		return LayoutInflater.from(context);
 	}
 }

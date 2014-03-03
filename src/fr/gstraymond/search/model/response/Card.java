@@ -7,15 +7,21 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Card implements Parcelable {
-	private String title;
-	private String frenchTitle;
-	private String type;
+	private String attack;
+	private List<String> capabilities;
 	private String castingCost;
-	private String power;
-	private String toughness;
+	private String clazz;
+	private String classCode;
 	private String description;
-	private List<Publication> publications;
-	private List<String> formats;
+	private String elite;
+	private String health;
+	private String image;
+	private String minionType;
+	private String rarity;
+	private String rarityCode;
+	private String set;
+	private String title;
+	private String type;
 
 	public static final Parcelable.Creator<Card> CREATOR = new Parcelable.Creator<Card>() {
 		@Override
@@ -33,17 +39,22 @@ public class Card implements Parcelable {
 	}
 
 	public Card(Parcel source) {
-		title = source.readString();
-		frenchTitle = source.readString();
-		type = source.readString();
+		capabilities = new ArrayList<String>();
+		
+		attack = source.readString();
+		source.readList(capabilities, String.class.getClassLoader());
 		castingCost = source.readString();
-		power = source.readString();
-		toughness = source.readString();
+		clazz = source.readString();
+		classCode = source.readString();
 		description = source.readString();
-		publications = new ArrayList<Publication>();
-		source.readList(publications, Publication.class.getClassLoader());
-		formats = new ArrayList<String>();
-		source.readList(formats, String.class.getClassLoader());
+		elite = source.readString();
+		health = source.readString();
+		image = source.readString();
+		minionType = source.readString();
+		rarity = source.readString();
+		rarityCode = source.readString();
+		title = source.readString();
+		type = source.readString();
 	}
 
 	@Override
@@ -53,15 +64,20 @@ public class Card implements Parcelable {
 
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
-		dest.writeString(title);
-		dest.writeString(frenchTitle);
-		dest.writeString(type);
+		dest.writeString(attack);
+		dest.writeList(capabilities);
 		dest.writeString(castingCost);
-		dest.writeString(power);
-		dest.writeString(toughness);
+		dest.writeString(clazz);
+		dest.writeString(classCode);
 		dest.writeString(description);
-		dest.writeList(publications);
-		dest.writeList(formats);
+		dest.writeString(elite);
+		dest.writeString(health);
+		dest.writeString(image);
+		dest.writeString(minionType);
+		dest.writeString(rarity);
+		dest.writeString(rarityCode);
+		dest.writeString(title);
+		dest.writeString(type);
 	}
 
 	@Override
@@ -92,31 +108,6 @@ public class Card implements Parcelable {
 	public void setCastingCost(String castingCost) {
 		this.castingCost = castingCost;
 	}
-	
-
-	public String getFrenchTitle() {
-		return frenchTitle;
-	}
-
-	public void setFrenchTitle(String frenchTitle) {
-		this.frenchTitle = frenchTitle;
-	}
-
-	public String getPower() {
-		return power;
-	}
-
-	public void setPower(String power) {
-		this.power = power;
-	}
-
-	public String getToughness() {
-		return toughness;
-	}
-
-	public void setToughness(String toughness) {
-		this.toughness = toughness;
-	}
 
 	public String getDescription() {
 		return description;
@@ -126,19 +117,91 @@ public class Card implements Parcelable {
 		this.description = description;
 	}
 
-	public List<Publication> getPublications() {
-		return publications;
+	public String getAttack() {
+		return attack;
 	}
 
-	public void setPublications(List<Publication> publications) {
-		this.publications = publications;
+	public void setAttack(String attack) {
+		this.attack = attack;
 	}
 
-	public List<String> getFormats() {
-		return formats;
+	public String getRarity() {
+		return rarity;
 	}
 
-	public void setFormats(List<String> formats) {
-		this.formats = formats;
+	public void setRarity(String rarity) {
+		this.rarity = rarity;
+	}
+
+	public String getRarityCode() {
+		return rarityCode;
+	}
+
+	public void setRarityCode(String rarityCode) {
+		this.rarityCode = rarityCode;
+	}
+
+	public String getSet() {
+		return set;
+	}
+
+	public void setSet(String set) {
+		this.set = set;
+	}
+
+	public String getHealth() {
+		return health;
+	}
+
+	public void setHealth(String health) {
+		this.health = health;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public String getElite() {
+		return elite;
+	}
+
+	public void setElite(String elite) {
+		this.elite = elite;
+	}
+
+	public String getClazz() {
+		return clazz;
+	}
+
+	public void setClazz(String clazz) {
+		this.clazz = clazz;
+	}
+
+	public String getClassCode() {
+		return classCode;
+	}
+
+	public void setClassCode(String classCode) {
+		this.classCode = classCode;
+	}
+
+	public String getMinionType() {
+		return minionType;
+	}
+
+	public void setMinionType(String minionType) {
+		this.minionType = minionType;
+	}
+
+	public List<String> getCapabilities() {
+		return capabilities;
+	}
+
+	public void setCapabilities(List<String> capabilities) {
+		this.capabilities = capabilities;
 	}
 }

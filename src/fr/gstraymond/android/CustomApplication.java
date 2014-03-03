@@ -11,20 +11,21 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
-import fr.gstraymond.hearthstone.card.search.R;
 import fr.gstraymond.biz.ElasticSearchClient;
 import fr.gstraymond.cache.BitmapCache;
-import fr.gstraymond.ui.CastingCostAssetLoader;
+import fr.gstraymond.hearthstone.card.search.R;
 
 public class CustomApplication extends Application {	
 	
+	private static final String EN = "en";
+	private static final String FR = "fr";
+
 	private static final String TABLET = "tablet";
 	
-	private static final String SEARCH_SERVER_HOST = "engine.magic-card-search.com:8080";
+	private static final String SEARCH_SERVER_HOST = "engine.hearthstone-card-search.com:8080";
 //	private static final String SEARCH_SERVER_HOST = "local-gsr:9200";
 	
 	private ElasticSearchClient elasticSearchClient;
-	private CastingCostAssetLoader castingCostAssetLoader;
 	private ObjectMapper objectMapper;
 	private Boolean isTablet;
 	private BitmapCache bitmapCache; 
@@ -32,24 +33,26 @@ public class CustomApplication extends Application {
 	public void init() {
 		initObjectMapper();
 		initElasticSearchClient();
-		initCastingCostAssetLoader();
 		initIsTablet();
 		initBitmapCache();
 	}
 
 	private void initElasticSearchClient() {
 		try {
-			URL url = new URL("http://" + SEARCH_SERVER_HOST + "/magic/card/_search");
+			URL url = new URL("http://" + SEARCH_SERVER_HOST + "/hearthstone_" + getLang() + "/card/_search");
 			this.elasticSearchClient = new ElasticSearchClient(url, getObjectMapper(), this);
 		} catch (MalformedURLException e) {
 			Log.e(getClass().getName(), "Error in constructor", e);
 		}
 	}
 	
-	private void initCastingCostAssetLoader() {
-		CastingCostAssetLoader loader = new CastingCostAssetLoader();
-		loader.init(this);
-		this.castingCostAssetLoader = loader;
+	private String getLang() {
+        String language = getResources().getConfiguration().locale.getLanguage();
+        if (FR.equals(language)) {
+        	return FR;
+        }
+        return EN;
+
 	}
 
 	private void initObjectMapper() {
@@ -77,17 +80,6 @@ public class CustomApplication extends Application {
 
 	public void setElasticSearchClient(ElasticSearchClient elasticSearchClient) {
 		this.elasticSearchClient = elasticSearchClient;
-	}
-
-	public CastingCostAssetLoader getCastingCostAssetLoader() {
-		if (castingCostAssetLoader == null) {
-			initCastingCostAssetLoader();
-		}
-		return castingCostAssetLoader;
-	}
-
-	public void setCastingCostAssetLoader(CastingCostAssetLoader castingCostAssetLoader) {
-		this.castingCostAssetLoader = castingCostAssetLoader;
 	}
 
 	public ObjectMapper getObjectMapper() {

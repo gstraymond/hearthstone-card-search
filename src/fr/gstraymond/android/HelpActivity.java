@@ -8,11 +8,9 @@ import android.text.method.LinkMovementMethod;
 import android.view.MenuItem;
 import android.widget.TextView;
 import fr.gstraymond.hearthstone.card.search.R;
-import fr.gstraymond.biz.CastingCostImageGetter;
 import fr.gstraymond.search.help.HelpText;
 import fr.gstraymond.tools.HelpFormatter;
 import fr.gstraymond.tools.MapperUtil;
-import fr.gstraymond.ui.CastingCostAssetLoader;
 
 public class HelpActivity extends CustomActivity {
 
@@ -21,8 +19,7 @@ public class HelpActivity extends CustomActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_help);
 		
-		CastingCostImageGetter imageGetter = new CastingCostImageGetter(getCCAssetLoader());
-		HelpFormatter formatter = new HelpFormatter(imageGetter);
+		HelpFormatter formatter = new HelpFormatter();
 		
 		Spanned text = formatter.format(getHelpText());
 
@@ -32,10 +29,6 @@ public class HelpActivity extends CustomActivity {
 		view.setMovementMethod(LinkMovementMethod.getInstance());
 
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-	}
-
-	private CastingCostAssetLoader getCCAssetLoader() {
-		return getCustomApplication().getCastingCostAssetLoader();
 	}
 
 	private HelpText getHelpText() {

@@ -1,91 +1,153 @@
 package fr.gstraymond.ui;
 
-import static android.R.style.TextAppearance_DeviceDefault_Medium;
-
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.text.Html;
 import android.text.Spanned;
-import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
-import fr.gstraymond.biz.CastingCostImageGetter;
 import fr.gstraymond.hearthstone.card.search.R;
 import fr.gstraymond.search.model.response.Card;
-import fr.gstraymond.tools.CastingCostFormatter;
-import fr.gstraymond.tools.LanguageUtil;
-import fr.gstraymond.tools.PowerToughnessFormatter;
-import fr.gstraymond.tools.TypeFormatter;
+import fr.gstraymond.tools.DescriptionFormatter;
 
 public class CardArrayAdapter extends ArrayAdapter<Card> {
-
-	private CastingCostImageGetter imagetGetter;
-	private CastingCostFormatter ccFormatter;
-	private PowerToughnessFormatter ptFormatter;
-	private TypeFormatter typeFormatter;
-	private boolean showFrenchTitle;
+	
+	private static final float ALPHA = 0.5f;
+	
+	private DescriptionFormatter descFormatter;
 
 	public CardArrayAdapter(Context context, int resource,
-			int textViewResourceId, List<Card> objects,
-			CastingCostAssetLoader castingCostAssetLoader) {
-		
+			int textViewResourceId, List<Card> objects) {
 		super(context, resource, textViewResourceId, objects);
-		this.imagetGetter = new CastingCostImageGetter(castingCostAssetLoader);
-		this.ccFormatter = new CastingCostFormatter();
-		this.ptFormatter = new PowerToughnessFormatter();
-		this.typeFormatter = new TypeFormatter(context);
-		this.showFrenchTitle = LanguageUtil.showFrench(context);
+		descFormatter = new DescriptionFormatter();
 	}
 
 	@Override
-	public View getView(int position, View view, ViewGroup parent) {
-		TextView text = (TextView) view;
+	public View getView(int position, View convertView, ViewGroup parent) {
+		View view = convertView;
 
-		if (text == null) {
-			text = new TextView(getContext());
-			text.setEllipsize(TextUtils.TruncateAt.END);
-			text.setSingleLine(true);
-			text.setTextAppearance(getContext(), TextAppearance_DeviceDefault_Medium);
-			text.setPadding(getTextPadding() * 2, 0, getTextPadding() * 2, getTextPadding());
+		if (view == null) {
+			LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+			view = inflater.inflate(R.layout.array_adapter_card, null);
 		}
 
-		text.setText(formatCard(getItem(position), position));
-		return text;
-
-	}
-
-	private int getTextPadding() {
-		return (int) getContext().getResources().getDimension(R.dimen.listTextPaddingBottom);
-	}	
-
-	private Spanned formatCard(Card card, int position) {
-
-		String castingCost = "";
-		if (card.getCastingCost() != null) {
-			castingCost = ccFormatter.format(card.getCastingCost());
-		}
-
-		String line = (position + 1) + ". " + castingCost + " <b>" + getTitle(card) + "</b> — " + getPTorType(card);
-
-		return Html.fromHtml(line, imagetGetter, null);
-	}
-	
-	private String getPTorType(Card card) {
-		String pt = ptFormatter.format(card);
-		if (pt.length() > 0) {
-			return pt;
-		}
+		TextView attackTextView = getTextView(view, R.id.array_adapter_card_attack);
+		TextView healthTextView = getTextView(view, R.id.array_adapter_card_health);
+		TextView castingCostTextView = getTextView(view, R.id.array_adapter_card_casting_cost);
+		TextView textTextView = getTextView(view, R.id.array_adapter_text);
+		TextView descriptionTextView = getTextView(view, R.id.array_adapter_description);
 		
-		return typeFormatter.formatFirst(card);
+		ImageView rarityImageView = getImageView(view, R.id.array_adapter_rarity);
+		
+		show(attackTextView, healthTextView, castingCostTextView, descriptionTextView, rarityImageView);
+
+		Card card = getItem(position);
+
+		attackTextView.setText(card.getAttack());
+		healthTextView.setText(card.getHealth());
+		castingCostTextView.setText(card.getCastingCost());
+		
+		textTextView.setText(formatCard(card));
+		
+		setRarityImageView(card, rarityImageView);
+		
+		descriptionTextView.setText(descFormatter.formatWithCapabilities(card));
+
+		ImageView backgroundView = getImageView(view, R.id.array_adapter_background);
+		backgroundView.setBackgroundColor(getBackgroundColor(card));
+		backgroundView.setAlpha(ALPHA);
+		
+		hideIfNull(attackTextView, card.getAttack());
+		hideIfNull(healthTextView, card.getHealth());
+		hideIfNull(castingCostTextView, card.getCastingCost());
+		hideIfNull(descriptionTextView, card.getDescription());
+		
+		return view;
 	}
 
-	private String getTitle(Card card) {
-		if (showFrenchTitle && card.getFrenchTitle() != null) {
-			return card.getFrenchTitle();
+	private void setRarityImageView(Card card, ImageView imageView) {
+		String rarityCode = card.getRarityCode();
+		if ("common".equals(rarityCode)) {
+			imageView.setImageResource(R.drawable.common);
+			return;
 		}
-		return card.getTitle();
+		if ("rare".equals(rarityCode)) {
+			imageView.setImageResource(R.drawable.rare);
+			return;
+		}
+		if ("epic".equals(rarityCode)) {
+			imageView.setImageResource(R.drawable.epic);
+			return;
+		}
+		if ("legendary".equals(rarityCode)) {
+			imageView.setImageResource(R.drawable.legendary);
+			return;
+		}
+		imageView.setVisibility(View.GONE);
+	}
+
+	private int getBackgroundColor(Card card) {
+		String classCode = card.getClassCode();
+		if ("warrior".equals(classCode)) {
+			return Color.rgb(115, 36, 24);
+		}
+		if ("paladin".equals(classCode)) {
+			return Color.rgb(186, 128, 41);
+		}
+		if ("hunter".equals(classCode)) {
+			return Color.rgb(36, 96, 30);
+		}
+		if ("rogue".equals(classCode)) {
+			return Color.rgb(57, 58, 64);
+		}
+		if ("priest".equals(classCode)) {
+			return Color.rgb(177, 180, 185);
+		}
+		if ("shaman".equals(classCode)) {
+			return Color.rgb(42, 49, 90);
+		}
+		if ("mage".equals(classCode)) {
+			return Color.rgb(99, 114, 162);
+		}
+		if ("warlock".equals(classCode)) {
+			return Color.rgb(88, 57, 96);
+		}
+		if ("druid".equals(classCode)) {
+			return Color.rgb(108, 70, 36);
+		}
+		return Color.rgb(120, 102, 87);
+	}
+
+	private void show(View... views) {
+		for (View view : views) {
+			view.setVisibility(View.VISIBLE);	
+		}
+	}
+
+	private void hideIfNull(TextView textView, Object property) {
+		if (property == null) {
+			textView.setVisibility(View.GONE);
+		}
+	}
+
+	private TextView getTextView(View view, int id) {
+		return (TextView) view.findViewById(id);
+	}
+
+	private ImageView getImageView(View view, int id) {
+		return (ImageView) view.findViewById(id);
+	}
+
+	private Spanned formatCard(Card card) {
+		String type = card.getMinionType() != null ? card.getMinionType() : card.getType();
+		
+		String line = "<b>" + card.getTitle() + "</b> — " + type;
+		return Html.fromHtml(line, null, null);
 	}
 }

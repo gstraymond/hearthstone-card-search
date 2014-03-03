@@ -11,47 +11,42 @@ import fr.gstraymond.search.model.request.facet.Facet;
 
 public class FacetConst {
 
-	private static final String ABILITY = "abilities.exact";
-	private static final String ARTIST = "artists.exact";
-	private static final String CMC = "convertedManaCost";
-	private static final String COLOR = "colors.exact";
-	private static final String DEVOTION = "devotions";
-	private static final String SET = "editions.exact";
-	private static final String FORMAT = "formats";
-	private static final String POWER = "power";
-	private static final String RARITY = "rarities";
-	private static final String TOUGHNESS = "toughness";
-	private static final String TYPE = "type";
+
+	private static final String ATTACK = "attack";
+	private static final String CAPABILITIES = "capabilities.exact";
+	private static final String CASTING_COST = "castingCost";
+	private static final String CLAZZ = "clazz.exact";
+	private static final String HEALTH = "health";
+	private static final String MINION_TYPE = "minionType.exact";
+	private static final String RARITY = "rarity.exact";
+	private static final String SET = "set.exact";
+	private static final String TYPE = "type.exact";
 
 	private static Map<String, Integer> facetNames;
 	private static List<String> facetOrder;
 
 	static {
 		facetNames = new HashMap<String, Integer>();
-		facetNames.put(ABILITY, R.string.facet_ability);
-		facetNames.put(ARTIST, R.string.facet_artist);
-		facetNames.put(COLOR, R.string.facet_color);
-		facetNames.put(CMC, R.string.facet_cmc);
-		facetNames.put(DEVOTION, R.string.facet_devotion);
-		facetNames.put(FORMAT, R.string.facet_format);
-		facetNames.put(POWER, R.string.facet_power);
+		facetNames.put(ATTACK, R.string.facet_attack);
+		facetNames.put(CAPABILITIES, R.string.facet_capabilities);
+		facetNames.put(CASTING_COST, R.string.facet_casting_cost);
+		facetNames.put(CLAZZ, R.string.facet_clazz);
+		facetNames.put(HEALTH, R.string.facet_health);
+		facetNames.put(MINION_TYPE, R.string.facet_minion_type);
 		facetNames.put(RARITY, R.string.facet_rarity);
 		facetNames.put(SET, R.string.facet_set);
-		facetNames.put(TOUGHNESS, R.string.facet_toughness);
 		facetNames.put(TYPE, R.string.facet_type);
 		
 		facetOrder = new ArrayList<String>();
-		facetOrder.add(COLOR);
-		facetOrder.add(DEVOTION);
-		facetOrder.add(CMC);
-		facetOrder.add(TYPE);
-		facetOrder.add(ABILITY);
-		facetOrder.add(POWER);
-		facetOrder.add(TOUGHNESS);
-		facetOrder.add(RARITY);
+		facetOrder.add(CASTING_COST);
+		facetOrder.add(CLAZZ);
+		facetOrder.add(ATTACK);
+		facetOrder.add(HEALTH);
+		facetOrder.add(MINION_TYPE);
 		facetOrder.add(SET);
-		facetOrder.add(FORMAT);
-		facetOrder.add(ARTIST);
+		facetOrder.add(RARITY);
+		facetOrder.add(TYPE);
+		facetOrder.add(CAPABILITIES);
 	}
 
 	private static void putInFacets(Map<String, Facet> facets, String facet) {
@@ -60,17 +55,15 @@ public class FacetConst {
 
 	public static Map<String, Facet> getFacets() {
 		Map<String, Facet> facets = new HashMap<String, Facet>();
-		putInFacets(facets, ABILITY);
-		putInFacets(facets, ARTIST);
-		putInFacets(facets, COLOR);
-		putInFacets(facets, CMC);
-		putInFacets(facets, DEVOTION);
+		putInFacets(facets, CASTING_COST);
+		putInFacets(facets, CLAZZ);
+		putInFacets(facets, ATTACK);
+		putInFacets(facets, HEALTH);
+		putInFacets(facets, MINION_TYPE);
 		putInFacets(facets, SET);
-		putInFacets(facets, FORMAT);
-		putInFacets(facets, POWER);
 		putInFacets(facets, RARITY);
-		putInFacets(facets, TOUGHNESS);
 		putInFacets(facets, TYPE);
+		putInFacets(facets, CAPABILITIES);
 		return facets;
 	}
 

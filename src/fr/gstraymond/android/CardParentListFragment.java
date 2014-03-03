@@ -9,7 +9,6 @@ import fr.gstraymond.hearthstone.card.search.R;
 
 public class CardParentListFragment extends Fragment {
 
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -19,5 +18,4 @@ public class CardParentListFragment extends Fragment {
 
 		return rootView;
 	}
-
 }

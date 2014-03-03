@@ -5,6 +5,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build;
 import android.util.Log;
+import fr.gstraymond.hearthstone.card.search.R;
 
 public class VersionUtils {
 	
@@ -22,5 +23,9 @@ public class VersionUtils {
 		}
 		
 		return null;
+	}
+
+	public static String getAppName(Context context) {
+		return context.getString(R.string.app_name);
 	}
 }

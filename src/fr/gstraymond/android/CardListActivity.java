@@ -1,7 +1,6 @@
 package fr.gstraymond.android;
 
 import static fr.gstraymond.constants.Consts.CARD;
-import static fr.gstraymond.constants.Consts.POSITION;
 import android.app.Fragment;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -17,19 +16,18 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.SearchView;
-import android.widget.TextView;
 import android.widget.Toast;
-import fr.gstraymond.hearthstone.card.search.R;
 import fr.gstraymond.biz.SearchOptions;
 import fr.gstraymond.biz.SearchProcessor;
 import fr.gstraymond.biz.UIUpdater;
+import fr.gstraymond.hearthstone.card.search.R;
 import fr.gstraymond.search.model.response.Card;
 import fr.gstraymond.ui.EndScrollListener;
 import fr.gstraymond.ui.TextListener;
 
 public class CardListActivity extends CustomActivity implements
-		CardListFragment.Callbacks, CardDetailFragment.Callbacks {
-	
+		CardListFragment.Callbacks {
+
 	private static final int DRAWER_DELAY = 1200;
 	private static final String CURRENT_SEARCH = "currentSearch";
 	public static final String CARD_RESULT = "result";
@@ -160,8 +158,6 @@ public class CardListActivity extends CustomActivity implements
 		if (isTablet()) {
 			replaceFragment(new CardDetailFragment(), R.id.card_detail_container, getCurrentCardBundle());
 			
-			getTitleTextView().setText(CardDetailActivity.formatTitle(this, currentCard));
-			
 			if (menu != null) {
 				menu.findItem(R.id.pictures_tab).setVisible(true);
 				menu.findItem(R.id.oracle_tab).setVisible(false);
@@ -170,28 +166,6 @@ public class CardListActivity extends CustomActivity implements
 			Intent intent = new Intent(this, CardDetailActivity.class);
 			intent.putExtra(CARD, card);
 			startActivity(intent);
-		}
-	}
-
-	@Override
-	public void onItemSelected(int id) {
-		if (isTablet()) {
-			Bundle bundle = getCurrentCardBundle();
-			// first element is a card
-			bundle.putInt(POSITION, id - 1);
-			
-			replaceFragment(new CardPagerFragment(), R.id.card_detail_container, bundle);
-			
-			if (menu != null) {
-				menu.findItem(R.id.pictures_tab).setVisible(false);
-				menu.findItem(R.id.oracle_tab).setVisible(true);
-			}
-		} else {
-			Intent intent = new Intent(this, CardPagerActivity.class);
-			intent.putExtra(CARD, currentCard);
-			// first element is a card
-			intent.putExtra(POSITION, id - 1);
-			startActivity(intent);	
 		}
 	}
 
@@ -237,30 +211,13 @@ public class CardListActivity extends CustomActivity implements
 		
 		// FIXME : afficher le numéro de version
 		/*case android.R.id.home:
+
+	private TextView getTitleTextView() {
+		return (TextView) findViewById(R.id.card_detail_title);
+	}
 			String version = "Version " + VersionUtils.getAppVersion(this);
 			makeText(this, version, LENGTH_SHORT).show();
 			return true;*/
-
-		case R.id.pictures_tab:
-			if (isTablet()) {
-				replaceFragment(new CardPagerFragment(), R.id.card_detail_container, getCurrentCardBundle());
-				
-				item.setVisible(false);
-				menu.findItem(R.id.oracle_tab).setVisible(true);
-			} else {
-				Intent intent = new Intent(this, CardPagerActivity.class);
-				intent.putExtra(CARD, currentCard);
-				startActivity(intent);
-			}
-			return true;
-			
-		case R.id.oracle_tab:
-			replaceFragment(new CardDetailFragment(), R.id.card_detail_container, getCurrentCardBundle());
-			
-			getTitleTextView().setText(CardDetailActivity.formatTitle(this, currentCard));
-			item.setVisible(false);
-			menu.findItem(R.id.pictures_tab).setVisible(true);
-			return true;
 			
 		case R.id.clear_tab:
 			resetSearchView();
@@ -326,14 +283,6 @@ public class CardListActivity extends CustomActivity implements
 
 	public View getCardView() {
 		return findViewById(R.id.card_list);
-	}
-
-	public View getPicturesView() {
-		return findViewById(R.id.pictures_layout);
-	}
-
-	private TextView getTitleTextView() {
-		return (TextView) findViewById(R.id.card_detail_title);
 	}
 
 	public TextListener getTextListener() {

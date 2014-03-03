@@ -5,21 +5,14 @@ import java.util.List;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.TextUtils;
-import fr.gstraymond.biz.CastingCostImageGetter;
 import fr.gstraymond.search.help.HelpText;
 
 public class HelpFormatter {
 
-	private CastingCostImageGetter imageGetter;
-
-	public HelpFormatter(CastingCostImageGetter imageGetter) {
-		this.imageGetter = imageGetter;
-	}
-
 	public Spanned format(HelpText helpText) {
 		StringBuilder html = new StringBuilder();
 		recursiveFormat(html, helpText, 1, "");
-		return Html.fromHtml(html.toString(), imageGetter, null);
+		return Html.fromHtml(html.toString(), null, null);
 	}
 
 	private void recursiveFormat(StringBuilder html, HelpText helpText,

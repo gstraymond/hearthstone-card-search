@@ -38,7 +38,8 @@
         <!-- Card detail -->
         <activity
             android:name="fr.gstraymond.android.CardDetailActivity"
-            android:parentActivityName="fr.gstraymond.android.CardListActivity" >
+            android:parentActivityName="fr.gstraymond.android.CardListActivity"
+            android:theme="@style/Theme.Transparent" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".CardListActivity" />
@@ -47,7 +48,7 @@
         <!-- Card detail -->
         <activity
             android:name="fr.gstraymond.android.CardPagerActivity"
-            android:parentActivityName="fr.gstraymond.android.CardDetailActivity">
+            android:parentActivityName="fr.gstraymond.android.CardDetailActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".CardDetailActivity" />

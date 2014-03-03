@@ -6,6 +6,8 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.ListFragment;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.View;
@@ -13,7 +15,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import fr.gstraymond.search.model.response.Card;
 import fr.gstraymond.ui.CardArrayAdapter;
-import fr.gstraymond.ui.CastingCostAssetLoader;
 
 public class CardListFragment extends ListFragment {
 
@@ -42,13 +43,10 @@ public class CardListFragment extends ListFragment {
 		super.onCreate(savedInstanceState);
 		
 		cards = getArguments().getParcelableArrayList(CARD_LIST);
-
-		CustomApplication applicationContext = (CustomApplication) getActivity().getApplicationContext();
-		CastingCostAssetLoader castingCostAssetLoader = applicationContext.getCastingCostAssetLoader();
 		
 		arrayAdapter = new CardArrayAdapter(getActivity(),
 				android.R.layout.simple_list_item_activated_1,
-				android.R.id.text2, cards, castingCostAssetLoader);
+				android.R.id.text2, cards);
 		
 		setListAdapter(arrayAdapter);
 	}
@@ -66,6 +64,8 @@ public class CardListFragment extends ListFragment {
 
 		CardListActivity activity = (CardListActivity) getActivity();
 		getListView().setOnScrollListener(activity.getEndScrollListener());
+		getListView().setDivider(new ColorDrawable(Color.BLACK));
+		getListView().setDividerHeight(2);
 	}
 
 	@Override

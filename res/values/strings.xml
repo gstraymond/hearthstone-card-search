@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Magic Card Search</string>
+    <string name="app_name">Hearthstone Card Search</string>
     <string name="welcome_text"></string>
     <string name="progress_card_found">card found</string>
     <string name="progress_cards_found">cards found</string>
-    <string name="website_url">magic-card-search.com</string>
+    <string name="website_url">hearthstone-card-search.com</string>
     <string name="logo">logo</string>
     <string name="list_menu_cards">Show card list</string>
     <string name="list_menu_facets">Show filters</string>
@@ -27,16 +27,14 @@
     
     <string name="toasting_loading_finished">Done !</string>
     
-    <string name="facet_ability">Ability</string>
-    <string name="facet_artist">Artist</string>
-    <string name="facet_color">Color</string>
-    <string name="facet_cmc">Converted Mana Cost</string>
-    <string name="facet_devotion">Devotion</string>
-    <string name="facet_format">Format</string>
-    <string name="facet_power">Power</string>
+    <string name="facet_attack">Attack</string>
+    <string name="facet_capabilities">Capabilities</string>
+    <string name="facet_casting_cost">Casting Cost</string>
+    <string name="facet_clazz">Class</string>
+    <string name="facet_health">Health</string>
+    <string name="facet_minion_type">Minion Type</string>
     <string name="facet_rarity">Rarity</string>
     <string name="facet_set">Set</string>
-    <string name="facet_toughness">Toughness</string>
     <string name="facet_type">Type</string>
     
     <string name="loading_initial">searching…</string>

@@ -1,64 +1,34 @@
 package fr.gstraymond.tools;
 
-import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.List;
 
-import android.text.TextUtils;
-
+import android.text.Html;
+import android.text.Spanned;
+import android.text.SpannedString;
 import fr.gstraymond.search.model.response.Card;
 
 public class DescriptionFormatter {
-	
-	private Pattern pattern;
-	
-	public DescriptionFormatter() {
-		this.pattern = Pattern.compile("\\{(.*?)\\}");
+
+	public Spanned formatWithCapabilities(Card card) {
+		String description = card.getDescription();
+		List<String> capabilities = card.getCapabilities();
+		if (description == null || capabilities == null) {
+			String string = description != null ? description : "";
+			return new SpannedString(string);
+		}
+		
+		for (String capability : capabilities) {
+			description = description.replaceAll(capability, "<b>" + capability + "</b>");
+		}
+		return Html.fromHtml(description, null, null);
 	}
-	
-	public String format(Card card) {
+
+	public String formatNull(Card card) {
 		if (card.getDescription() == null) {
 			return "";
 		}
-		
-		String tmp = card.getDescription().replaceAll("--", "—");
-		if (tmp.contains("{")) {
 
-			Matcher matcher = pattern.matcher(card.getDescription());
-			while (matcher.find()) {
-				String match = matcher.group();
-				String espacedMatch = match
-						.replace("{", "\\{").replace("}", "\\}")
-						.replace("(", "\\(").replace(")", "\\)");
-
-				tmp = tmp.replaceFirst(espacedMatch, replace(match));
-			}
-		}
-		
-		return TextUtils.join("<br /><br />", tmp.split("\n"));
-	}
-
-	private String replace(String cost) {		
-		// cas pour les LEVEL X-Y
-		if (cost.contains("LEVEL")) {
-			return cost;
-		}
-		
-		String tempCost = cost.toUpperCase(Locale.ENGLISH);
-
-		tempCost = tempCost.replace("{", "");
-		tempCost = tempCost.replace("}", "");
-
-		tempCost = tempCost.replace("(", "");
-		tempCost = tempCost.replace(")", "");
-		
-		tempCost = tempCost.replace("/", "");
-
-		return formatManaSymbol(tempCost);
-	}
-
-	private String formatManaSymbol(String tempCost) {
-		return "<img src='" + tempCost + ".png' />";
+		return card.getDescription();
 	}
 
 }
