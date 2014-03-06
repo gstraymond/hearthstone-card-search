@@ -22,6 +22,7 @@ import fr.gstraymond.biz.SearchProcessor;
 import fr.gstraymond.biz.UIUpdater;
 import fr.gstraymond.hearthstone.card.search.R;
 import fr.gstraymond.search.model.response.Card;
+import fr.gstraymond.ui.CardFragment;
 import fr.gstraymond.ui.EndScrollListener;
 import fr.gstraymond.ui.TextListener;
 
@@ -156,7 +157,7 @@ public class CardListActivity extends CustomActivity implements
 	public void onItemSelected(Parcelable card) {
 		currentCard = (Card) card;
 		if (isTablet()) {
-			replaceFragment(new CardDetailFragment(), R.id.card_detail_container, getCurrentCardBundle());
+			replaceFragment(new CardFragment(), R.id.card_detail_container, getCurrentCardBundle());
 			
 			if (menu != null) {
 				menu.findItem(R.id.pictures_tab).setVisible(true);

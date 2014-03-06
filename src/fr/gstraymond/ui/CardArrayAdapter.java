@@ -54,14 +54,11 @@ public class CardArrayAdapter extends ArrayAdapter<Card> {
 		castingCostTextView.setText(card.getCastingCost());
 		
 		textTextView.setText(formatCard(card));
+//		textTextView.setTextColor(getBackgroundColor(card));
 		
 		setRarityImageView(card, rarityImageView);
 		
 		descriptionTextView.setText(descFormatter.formatWithCapabilities(card));
-
-		ImageView backgroundView = getImageView(view, R.id.array_adapter_background);
-		backgroundView.setBackgroundColor(getBackgroundColor(card));
-		backgroundView.setAlpha(ALPHA);
 		
 		hideIfNull(attackTextView, card.getAttack());
 		hideIfNull(healthTextView, card.getHealth());

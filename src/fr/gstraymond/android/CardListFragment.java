@@ -6,8 +6,6 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.ListFragment;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.View;
@@ -64,8 +62,6 @@ public class CardListFragment extends ListFragment {
 
 		CardListActivity activity = (CardListActivity) getActivity();
 		getListView().setOnScrollListener(activity.getEndScrollListener());
-		getListView().setDivider(new ColorDrawable(Color.BLACK));
-		getListView().setDividerHeight(2);
 	}
 
 	@Override
@@ -130,7 +126,7 @@ public class CardListFragment extends ListFragment {
 		// select the first element
 		if (isTablet() && getListAdapter().getCount() > 0) {
 			long itemId = getListAdapter().getItemId(0);
-			View view = getListAdapter().getView(0, null, null);
+			View view = getListAdapter().getView(0, null, getListView());
 			getListView().performItemClick(view, 0, itemId);	
 		}
 	}

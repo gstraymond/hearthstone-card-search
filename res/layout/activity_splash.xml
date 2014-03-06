@@ -3,22 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        style="@android:style/Widget.Holo.ProgressBar.Horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
-
     <ImageView
         android:id="@+id/imgLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:contentDescription="@string/logo"
-        android:scaleX="2"
-        android:scaleY="2"
-        android:src="@drawable/ic_launcher" />
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        android:src="@drawable/hs_logo" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="@android:style/Widget.Holo.ProgressBar.Horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
 
     <TextView
         style="?android:attr/textAppearanceLarge"
