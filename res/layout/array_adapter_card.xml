@@ -53,7 +53,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.42" >
+            android:layout_weight="0.43" >
 
             <TextView
                 android:id="@+id/array_adapter_card_attack"
@@ -76,7 +76,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.13" >
+            android:layout_weight="0.14" >
 
             <TextView
                 android:id="@+id/array_adapter_description"
@@ -90,7 +90,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.45" >
+            android:layout_weight="0.43" >
 
             <TextView
                 android:id="@+id/array_adapter_card_health"

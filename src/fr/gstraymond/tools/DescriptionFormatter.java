@@ -4,7 +4,6 @@ import java.util.List;
 
 import android.text.Html;
 import android.text.Spanned;
-import android.text.SpannedString;
 import fr.gstraymond.search.model.response.Card;
 
 public class DescriptionFormatter {
@@ -12,23 +11,21 @@ public class DescriptionFormatter {
 	public Spanned formatWithCapabilities(Card card) {
 		String description = card.getDescription();
 		List<String> capabilities = card.getCapabilities();
-		if (description == null || capabilities == null) {
-			String string = description != null ? description : "";
-			return new SpannedString(string);
+		if (description == null || capabilities == null || capabilities.isEmpty()) {
+			description = description != null ? "<br /><br />" + description : "";
+			return Html.fromHtml(getFirstLine(card) + description);
 		}
 		
 		for (String capability : capabilities) {
 			description = description.replaceAll(capability, "<b>" + capability + "</b>");
 		}
-		return Html.fromHtml(description, null, null);
+		
+		return Html.fromHtml(getFirstLine(card) + "<br /><br />" + description);
 	}
-
-	public String formatNull(Card card) {
-		if (card.getDescription() == null) {
-			return "";
-		}
-
-		return card.getDescription();
+	
+	private String getFirstLine(Card card) {
+		String type = card.getMinionType() != null ? card.getMinionType() : card.getType();
+		return type + " — " + card.getClazz();
 	}
 
 }

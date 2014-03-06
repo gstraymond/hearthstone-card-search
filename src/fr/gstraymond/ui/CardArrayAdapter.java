@@ -3,7 +3,6 @@ package fr.gstraymond.ui;
 import java.util.List;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.text.Html;
 import android.text.Spanned;
 import android.view.LayoutInflater;
@@ -17,8 +16,6 @@ import fr.gstraymond.search.model.response.Card;
 import fr.gstraymond.tools.DescriptionFormatter;
 
 public class CardArrayAdapter extends ArrayAdapter<Card> {
-	
-	private static final float ALPHA = 0.5f;
 	
 	private DescriptionFormatter descFormatter;
 
@@ -54,7 +51,6 @@ public class CardArrayAdapter extends ArrayAdapter<Card> {
 		castingCostTextView.setText(card.getCastingCost());
 		
 		textTextView.setText(formatCard(card));
-//		textTextView.setTextColor(getBackgroundColor(card));
 		
 		setRarityImageView(card, rarityImageView);
 		
@@ -63,7 +59,6 @@ public class CardArrayAdapter extends ArrayAdapter<Card> {
 		hideIfNull(attackTextView, card.getAttack());
 		hideIfNull(healthTextView, card.getHealth());
 		hideIfNull(castingCostTextView, card.getCastingCost());
-		hideIfNull(descriptionTextView, card.getDescription());
 		
 		return view;
 	}
@@ -89,38 +84,6 @@ public class CardArrayAdapter extends ArrayAdapter<Card> {
 		imageView.setVisibility(View.GONE);
 	}
 
-	private int getBackgroundColor(Card card) {
-		String classCode = card.getClassCode();
-		if ("warrior".equals(classCode)) {
-			return Color.rgb(115, 36, 24);
-		}
-		if ("paladin".equals(classCode)) {
-			return Color.rgb(186, 128, 41);
-		}
-		if ("hunter".equals(classCode)) {
-			return Color.rgb(36, 96, 30);
-		}
-		if ("rogue".equals(classCode)) {
-			return Color.rgb(57, 58, 64);
-		}
-		if ("priest".equals(classCode)) {
-			return Color.rgb(177, 180, 185);
-		}
-		if ("shaman".equals(classCode)) {
-			return Color.rgb(42, 49, 90);
-		}
-		if ("mage".equals(classCode)) {
-			return Color.rgb(99, 114, 162);
-		}
-		if ("warlock".equals(classCode)) {
-			return Color.rgb(88, 57, 96);
-		}
-		if ("druid".equals(classCode)) {
-			return Color.rgb(108, 70, 36);
-		}
-		return Color.rgb(120, 102, 87);
-	}
-
 	private void show(View... views) {
 		for (View view : views) {
 			view.setVisibility(View.VISIBLE);	
@@ -142,9 +105,6 @@ public class CardArrayAdapter extends ArrayAdapter<Card> {
 	}
 
 	private Spanned formatCard(Card card) {
-		String type = card.getMinionType() != null ? card.getMinionType() : card.getType();
-		
-		String line = "<b>" + card.getTitle() + "</b> — " + type;
-		return Html.fromHtml(line, null, null);
+		return Html.fromHtml("<b>" + card.getTitle() + "</b>");
 	}
 }
