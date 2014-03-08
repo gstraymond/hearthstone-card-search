@@ -7,17 +7,6 @@
         android:showAsAction="ifRoom"
         android:title="@string/list_menu_search"/>
     <item
-        android:id="@+id/pictures_tab"
-        android:icon="@drawable/picture"
-        android:showAsAction="always"
-        android:title="@string/detail_menu_pictures"/>
-    <item
-        android:id="@+id/oracle_tab"
-        android:icon="@drawable/text_letter"
-        android:showAsAction="ifRoom"
-        android:title="@string/detail_menu_oracle"
-        android:visible="false"/>
-    <item
         android:id="@+id/clear_tab"
         android:icon="@drawable/delete"
         android:showAsAction="ifRoom"

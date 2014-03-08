@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/background_bitmap"
     android:orientation="vertical"
     android:padding="4dp" >
 
@@ -83,6 +82,7 @@
                 style="@android:style/TextAppearance.Holo.Medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/lightGrey"
                 android:layout_gravity="center"
                 android:gravity="center" />
         </LinearLayout>

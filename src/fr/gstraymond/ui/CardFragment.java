@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import fr.gstraymond.android.CustomApplication;
 import fr.gstraymond.biz.PictureDownloader;
 import fr.gstraymond.cache.BitmapCache;
@@ -21,9 +22,10 @@ public class CardFragment extends Fragment {
 
 		View rootView = inflater.inflate(R.layout.fragment_card, container, false);
 		ImageView imageView = (ImageView) rootView.findViewById(R.id.fragment_card_picture);
+		ProgressBar progressBar = (ProgressBar) rootView.findViewById(R.id.fragment_card_progress_bar);
 
 		Card card = getArguments().getParcelable(CARD);
-		new PictureDownloader(imageView, card.getImage(), getCache()).execute();
+		new PictureDownloader(imageView, progressBar, card.getImage(), getCache()).execute();
 
 		return rootView;
 	}

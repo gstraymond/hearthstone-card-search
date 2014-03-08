@@ -6,6 +6,8 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.ListFragment;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.View;
@@ -62,6 +64,8 @@ public class CardListFragment extends ListFragment {
 
 		CardListActivity activity = (CardListActivity) getActivity();
 		getListView().setOnScrollListener(activity.getEndScrollListener());
+		getListView().setDivider(new ColorDrawable(Color.DKGRAY));
+		getListView().setDividerHeight(2);
 	}
 
 	@Override

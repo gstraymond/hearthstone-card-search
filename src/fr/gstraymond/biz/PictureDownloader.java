@@ -7,22 +7,27 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import android.widget.ProgressBar;
 import fr.gstraymond.cache.BitmapCache;
 
 public class PictureDownloader extends AsyncTask<Void, Void, Bitmap> {
 
 	private ImageView imageView;
+	private ProgressBar progressBar;
 	private String url;
 	private BitmapCache bitmapCache; 
 	
-	public PictureDownloader(ImageView imageView, String url, BitmapCache bitmapCache) {
+	public PictureDownloader(ImageView imageView, ProgressBar progressBar, String url, BitmapCache bitmapCache) {
+		super();
 		this.imageView = imageView;
+		this.progressBar = progressBar;
 		this.url = url;
 		this.bitmapCache = bitmapCache;
 	}
-	
+
 	@Override
 	protected Bitmap doInBackground(Void... params) {
 		Log.d(getClass().getName(), "doInBackground : url " + url);
@@ -31,9 +36,12 @@ public class PictureDownloader extends AsyncTask<Void, Void, Bitmap> {
 		
     @Override
     protected void onPostExecute(Bitmap bitmap) {
+    	progressBar.setVisibility(View.GONE);
+    	
 		imageView.setImageBitmap(bitmap);
         imageView.setScaleType(ScaleType.FIT_XY);
         imageView.setAdjustViewBounds(true);
+        imageView.setVisibility(View.VISIBLE);
     }
 
 	private Bitmap getBitmap() {

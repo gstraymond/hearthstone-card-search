@@ -2,5 +2,6 @@
 <resources>
 
     <color name="transparentBlack">#66000000</color>
+    <color name="lightGrey">#CCC</color>
 
 </resources>

@@ -39,7 +39,6 @@ public class CardArrayAdapter extends ArrayAdapter<Card> {
 		TextView castingCostTextView = getTextView(view, R.id.array_adapter_card_casting_cost);
 		TextView textTextView = getTextView(view, R.id.array_adapter_text);
 		TextView descriptionTextView = getTextView(view, R.id.array_adapter_description);
-		
 		ImageView rarityImageView = getImageView(view, R.id.array_adapter_rarity);
 		
 		show(attackTextView, healthTextView, castingCostTextView, descriptionTextView, rarityImageView);
@@ -59,29 +58,29 @@ public class CardArrayAdapter extends ArrayAdapter<Card> {
 		hideIfNull(attackTextView, card.getAttack());
 		hideIfNull(healthTextView, card.getHealth());
 		hideIfNull(castingCostTextView, card.getCastingCost());
+
+		view.setBackgroundResource(getBackground(card));
 		
 		return view;
 	}
 
+	private int getBackground(Card card) {
+		String backgroundId = "background_" + card.getClassCode() + "_bitmap";
+		return getDrawableId(backgroundId);
+	}
+
+	private int getDrawableId(String drawableName) {
+		String drawableId = getContext().getPackageName() + ":drawable/" + drawableName;
+		return getContext().getResources().getIdentifier(drawableId, null, null);
+	}
+
 	private void setRarityImageView(Card card, ImageView imageView) {
 		String rarityCode = card.getRarityCode();
-		if ("common".equals(rarityCode)) {
-			imageView.setImageResource(R.drawable.common);
+		if ("free".equals(rarityCode)) {
+			imageView.setVisibility(View.GONE);
 			return;
 		}
-		if ("rare".equals(rarityCode)) {
-			imageView.setImageResource(R.drawable.rare);
-			return;
-		}
-		if ("epic".equals(rarityCode)) {
-			imageView.setImageResource(R.drawable.epic);
-			return;
-		}
-		if ("legendary".equals(rarityCode)) {
-			imageView.setImageResource(R.drawable.legendary);
-			return;
-		}
-		imageView.setVisibility(View.GONE);
+		imageView.setImageResource(getDrawableId(rarityCode));
 	}
 
 	private void show(View... views) {

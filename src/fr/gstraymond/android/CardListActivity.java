@@ -158,11 +158,6 @@ public class CardListActivity extends CustomActivity implements
 		currentCard = (Card) card;
 		if (isTablet()) {
 			replaceFragment(new CardFragment(), R.id.card_detail_container, getCurrentCardBundle());
-			
-			if (menu != null) {
-				menu.findItem(R.id.pictures_tab).setVisible(true);
-				menu.findItem(R.id.oracle_tab).setVisible(false);
-			}
 		} else {
 			Intent intent = new Intent(this, CardDetailActivity.class);
 			intent.putExtra(CARD, card);
