@@ -35,18 +35,22 @@ public class CardArrayAdapter extends ArrayAdapter<Card> {
 		}
 
 		TextView attackTextView = getTextView(view, R.id.array_adapter_card_attack);
+		TextView attackWeaponTextView = getTextView(view, R.id.array_adapter_card_attack_weapon);
 		TextView healthTextView = getTextView(view, R.id.array_adapter_card_health);
+		TextView durabilityTextView = getTextView(view, R.id.array_adapter_card_durability);
 		TextView castingCostTextView = getTextView(view, R.id.array_adapter_card_casting_cost);
 		TextView textTextView = getTextView(view, R.id.array_adapter_text);
 		TextView descriptionTextView = getTextView(view, R.id.array_adapter_description);
 		ImageView rarityImageView = getImageView(view, R.id.array_adapter_rarity);
 		
-		show(attackTextView, healthTextView, castingCostTextView, descriptionTextView, rarityImageView);
+		show(attackTextView, attackWeaponTextView, healthTextView, descriptionTextView, castingCostTextView, descriptionTextView, rarityImageView);
 
 		Card card = getItem(position);
 
 		attackTextView.setText(card.getAttack());
+		attackWeaponTextView.setText(card.getAttack());
 		healthTextView.setText(card.getHealth());
+		durabilityTextView.setText(card.getDurability());
 		castingCostTextView.setText(card.getCastingCost());
 		
 		textTextView.setText(formatCard(card));
@@ -55,8 +59,10 @@ public class CardArrayAdapter extends ArrayAdapter<Card> {
 		
 		descriptionTextView.setText(descFormatter.formatWithCapabilities(card));
 		
-		hideIfNull(attackTextView, card.getAttack());
+		hideIfNull(attackTextView, card.getDurability() != null ? null : card.getAttack());
+		hideIfNull(attackWeaponTextView, card.getDurability());
 		hideIfNull(healthTextView, card.getHealth());
+		hideIfNull(durabilityTextView, card.getDurability());
 		hideIfNull(castingCostTextView, card.getCastingCost());
 
 		view.setBackgroundResource(getBackground(card));

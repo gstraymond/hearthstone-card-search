@@ -15,6 +15,7 @@ public class Card implements Parcelable {
 	private String description;
 	private String elite;
 	private String health;
+	private String durability;
 	private String image;
 	private String minionType;
 	private String rarity;
@@ -49,6 +50,7 @@ public class Card implements Parcelable {
 		description = source.readString();
 		elite = source.readString();
 		health = source.readString();
+		durability = source.readString();
 		image = source.readString();
 		minionType = source.readString();
 		rarity = source.readString();
@@ -72,6 +74,7 @@ public class Card implements Parcelable {
 		dest.writeString(description);
 		dest.writeString(elite);
 		dest.writeString(health);
+		dest.writeString(durability);
 		dest.writeString(image);
 		dest.writeString(minionType);
 		dest.writeString(rarity);
@@ -203,5 +206,13 @@ public class Card implements Parcelable {
 
 	public void setCapabilities(List<String> capabilities) {
 		this.capabilities = capabilities;
+	}
+
+	public String getDurability() {
+		return durability;
+	}
+
+	public void setDurability(String durability) {
+		this.durability = durability;
 	}
 }
