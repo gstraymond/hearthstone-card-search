@@ -31,6 +31,7 @@
     <string name="facet_capabilities">Capabilities</string>
     <string name="facet_casting_cost">Casting Cost</string>
     <string name="facet_clazz">Class</string>
+    <string name="facet_durability">Durability</string>
     <string name="facet_health">Health</string>
     <string name="facet_minion_type">Minion Type</string>
     <string name="facet_rarity">Rarity</string>

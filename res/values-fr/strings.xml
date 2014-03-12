@@ -29,6 +29,7 @@
     <string name="facet_capabilities">Capacités</string>
     <string name="facet_casting_cost">Coût</string>
     <string name="facet_clazz">Classe</string>
+    <string name="facet_durability">Durabilité</string>
     <string name="facet_health">Vie</string>
     <string name="facet_minion_type">Type de serviteur</string>
     <string name="facet_rarity">Rareté</string>

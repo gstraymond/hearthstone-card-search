@@ -16,6 +16,7 @@ public class FacetConst {
 	private static final String CAPABILITIES = "capabilities.exact";
 	private static final String CASTING_COST = "castingCost";
 	private static final String CLAZZ = "clazz.exact";
+	private static final String DURABILITY = "durability";
 	private static final String HEALTH = "health";
 	private static final String MINION_TYPE = "minionType.exact";
 	private static final String RARITY = "rarity.exact";
@@ -31,6 +32,7 @@ public class FacetConst {
 		facetNames.put(CAPABILITIES, R.string.facet_capabilities);
 		facetNames.put(CASTING_COST, R.string.facet_casting_cost);
 		facetNames.put(CLAZZ, R.string.facet_clazz);
+		facetNames.put(DURABILITY, R.string.facet_durability);
 		facetNames.put(HEALTH, R.string.facet_health);
 		facetNames.put(MINION_TYPE, R.string.facet_minion_type);
 		facetNames.put(RARITY, R.string.facet_rarity);
@@ -42,6 +44,7 @@ public class FacetConst {
 		facetOrder.add(CLAZZ);
 		facetOrder.add(ATTACK);
 		facetOrder.add(HEALTH);
+		facetOrder.add(DURABILITY);
 		facetOrder.add(MINION_TYPE);
 		facetOrder.add(SET);
 		facetOrder.add(RARITY);
@@ -59,6 +62,7 @@ public class FacetConst {
 		putInFacets(facets, CLAZZ);
 		putInFacets(facets, ATTACK);
 		putInFacets(facets, HEALTH);
+		putInFacets(facets, DURABILITY);
 		putInFacets(facets, MINION_TYPE);
 		putInFacets(facets, SET);
 		putInFacets(facets, RARITY);
