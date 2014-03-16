@@ -35,6 +35,7 @@
     <string name="facet_rarity">Rareté</string>
     <string name="facet_set">Édition</string>
     <string name="facet_type">Type</string>
+    <string name="facet_more">Plus de filtres…</string>
     
     <string name="loading_initial">recherche…</string>
     <string name="loading_more">chargement des 30 cartes suivantes…</string>

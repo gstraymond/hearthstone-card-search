@@ -42,8 +42,9 @@ public class CardArrayAdapter extends ArrayAdapter<Card> {
 		TextView textTextView = getTextView(view, R.id.array_adapter_text);
 		TextView descriptionTextView = getTextView(view, R.id.array_adapter_description);
 		ImageView rarityImageView = getImageView(view, R.id.array_adapter_rarity);
+		View backgroundView = view.findViewById(R.id.array_adapter_background);
 		
-		show(attackTextView, attackWeaponTextView, healthTextView, descriptionTextView, castingCostTextView, descriptionTextView, rarityImageView);
+		show(attackTextView, attackWeaponTextView, healthTextView, durabilityTextView, descriptionTextView, castingCostTextView, descriptionTextView, rarityImageView);
 
 		Card card = getItem(position);
 
@@ -65,7 +66,7 @@ public class CardArrayAdapter extends ArrayAdapter<Card> {
 		hideIfNull(durabilityTextView, card.getDurability());
 		hideIfNull(castingCostTextView, card.getCastingCost());
 
-		view.setBackgroundResource(getBackground(card));
+		backgroundView.setBackgroundResource(getBackground(card));
 		
 		return view;
 	}

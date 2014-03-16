@@ -13,9 +13,9 @@ import android.widget.TextView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import fr.gstraymond.hearthstone.card.search.R;
 import fr.gstraymond.android.CardListActivity;
 import fr.gstraymond.android.CardListFragment;
+import fr.gstraymond.hearthstone.card.search.R;
 import fr.gstraymond.search.model.response.Card;
 import fr.gstraymond.search.model.response.Hit;
 import fr.gstraymond.search.model.response.SearchResult;
@@ -90,7 +90,7 @@ public class UIUpdater extends AsyncTask<Void, Void, SearchResult> {
 
 	private void updateUIFacets(SearchResult result) {
 		if (! getOptions().isAppend()) {
-			FacetListAdapter adapter = new FacetListAdapter(result.getFacets(), getOptions());
+			FacetListAdapter adapter = new FacetListAdapter(result.getFacets(), getOptions(), activity);
 			getFacetListView().setAdapter(adapter);
 
 			FacetOnChildClickListener listener = new FacetOnChildClickListener(adapter, getOptions(), activity);
