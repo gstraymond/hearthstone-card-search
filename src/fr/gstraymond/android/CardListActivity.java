@@ -108,11 +108,11 @@ public class CardListActivity extends CustomActivity implements
 	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
 		
-        // Sync the toggle state after onRestoreInstanceState has occurred.
+		// Sync the toggle state after onRestoreInstanceState has occurred.
 		if (isSmartphone()) {
-	        drawerToggle.syncState();
+			drawerToggle.syncState();
 
-	        new Handler().postDelayed(openDrawerRunnable(), DRAWER_DELAY);	        
+			openDrawer();
 		}
 
 		if (findViewById(R.id.search_input) != null) {
@@ -138,10 +138,15 @@ public class CardListActivity extends CustomActivity implements
 			hasDeviceRotated = false;
 		}
 	}
+
+	private void openDrawer() {
+		if (isSmartphone()) {
+			new Handler().postDelayed(openDrawerRunnable(), DRAWER_DELAY);
+		}
+	}
 	
 	private Runnable openDrawerRunnable() {
 	    return new Runnable() {
-
 	        @Override
 	        public void run() {
 	            drawerLayout.openDrawer(Gravity.START);
@@ -207,10 +212,6 @@ public class CardListActivity extends CustomActivity implements
 		
 		// FIXME : afficher le numéro de version
 		/*case android.R.id.home:
-
-	private TextView getTitleTextView() {
-		return (TextView) findViewById(R.id.card_detail_title);
-	}
 			String version = "Version " + VersionUtils.getAppVersion(this);
 			makeText(this, version, LENGTH_SHORT).show();
 			return true;*/
@@ -219,6 +220,7 @@ public class CardListActivity extends CustomActivity implements
 			resetSearchView();
 			SearchOptions options = new SearchOptions();
 			new SearchProcessor(this, options, R.string.loading_clear).execute();
+			openDrawer();
 			return true;
 
 		case R.id.help_tab:

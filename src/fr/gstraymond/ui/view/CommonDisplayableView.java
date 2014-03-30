@@ -1,5 +1,6 @@
 package fr.gstraymond.ui.view;
 
+import fr.gstraymond.api.ui.view.DisplayableView;
 import android.view.View;
 
 public abstract class CommonDisplayableView implements DisplayableView {

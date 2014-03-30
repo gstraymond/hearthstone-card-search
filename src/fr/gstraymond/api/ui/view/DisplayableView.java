@@ -1,4 +1,4 @@
-package fr.gstraymond.ui.view;
+package fr.gstraymond.api.ui.view;
 
 import android.view.View;
 import fr.gstraymond.search.model.response.Card;
