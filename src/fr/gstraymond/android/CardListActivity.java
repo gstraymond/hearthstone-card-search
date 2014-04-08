@@ -197,8 +197,10 @@ public class CardListActivity extends CustomActivity implements
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
-        drawerToggle.onConfigurationChanged(newConfig);
-        hasDeviceRotated = true;
+		if (isSmartphone()) {
+			drawerToggle.onConfigurationChanged(newConfig);
+		}
+		hasDeviceRotated = true;
 	}
 
 	@Override
